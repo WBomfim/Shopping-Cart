@@ -6,6 +6,12 @@ async function filterKeysProducts() {
   });
 }
 
+async function filterKeysItem(sku) {
+  const item = await fetchItem(sku);
+    const { id, title, thumbnail, price } = item;
+    return { sku: id, name: title, image: thumbnail, salePrice: price };
+}
+
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -32,20 +38,8 @@ function createProductItemElement({ sku, name, image, value }) {
   return section;
 }
 
-function getSkuFromProductItem(item) {
-  return item.querySelector('span.item__sku').innerText;
-}
-
 function cartItemClickListener(event) {
   // coloque seu código aquiiiiii
-}
-
-function createCartItemElement({ sku, name, salePrice }) {
-  const li = document.createElement('li');
-  li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
-  li.addEventListener('click', cartItemClickListener);
-  return li;
 }
 
 async function addProductsItem() {
@@ -58,6 +52,35 @@ async function addProductsItem() {
   });
 }
 
+function getSkuFromProductItem(item) {
+  return item.querySelector('span.item__sku').innerText;
+}
+
+function createCartItemElement({ sku, name, salePrice }) {
+  const li = document.createElement('li');
+  li.className = 'cart__item';
+  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.addEventListener('click', cartItemClickListener);
+  return li;
+}
+
+async function addItemsInCart(event) {
+  if (event.target.className === 'item__add') {
+    const cart = document.querySelector('.cart__items');
+    const getItem = event.target.parentNode;
+    const sku = getSkuFromProductItem(getItem);
+    const filteredItem = await filterKeysItem(sku);
+    const liCart = createCartItemElement(filteredItem);
+    cart.appendChild(liCart);
+  }
+}
+
+function setItemsCart() {
+  const addButton = document.querySelector('.items');
+  addButton.addEventListener('click', addItemsInCart);
+}
+
 window.onload = () => {
   addProductsItem();
+  setItemsCart();
 };
