@@ -1,4 +1,4 @@
-async function filterKeyProducts() {
+async function filterKeysProducts() {
   const { results } = await fetchProducts('computador');
   return results.map((product) => {
     const { id, title, thumbnail, price } = product;
@@ -50,8 +50,7 @@ function createCartItemElement({ sku, name, salePrice }) {
 
 async function addProductsItem() {
   const sectionItems = document.querySelector('.items');
-
-  const products = await filterKeyProducts();
+  const products = await filterKeysProducts();
   
   products.forEach((product) => {
     const item = createProductItemElement(product);
