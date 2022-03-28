@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(245, 245, 245);
 }
 
 .header {
@@ -97,7 +97,7 @@ body {
   height: auto;
   margin: 5px;
   width: 200px;
-  border: 2px solid rgb(234, 234, 233);
+  border: 2px solid rgb(221, 221, 221);
   border-radius: 5px;
   box-sizing: border-box;
 }
@@ -129,9 +129,9 @@ body {
 
 .cart {
   display: flex;
-  flex-basis: 32%;
+  flex-basis: 33%;
   flex-flow: column wrap;
-  background-color: rgb(241, 241, 238);
+  background-color: rgb(228, 228, 228);
   height: 100vh;
 }
 
@@ -140,10 +140,22 @@ body {
   overflow-y: scroll;
 }
 
+.price-display {
+  align-self: center;
+  font-size: 25px;
+  padding: 10px;
+}
+
+.price-display .total-price {
+  font-weight: 900;
+}
+
 .empty-cart {
   width: 170px;
   height: 35px;
   margin: 0 auto;
   border: 2px solid rgb(5, 52, 219);
-  background-color: rgb(249, 249, 246);
+  background-color: rgb(5, 52, 219);
+  border-radius: 8px;
+  color: white;
 }
