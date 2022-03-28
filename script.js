@@ -14,6 +14,18 @@ async function filterKeysItem(sku) {
     return { sku: id, name: title, image: thumbnail, salePrice: price };
 }
 
+function insertLoadingPage(element) {
+  const loading = document.createElement('span');
+  loading.className = 'loading';
+  loading.innerText = 'carregando...';
+  element.appendChild(loading);
+}
+
+function removeLoadingPage(element) {
+  const section = element;
+  section.innerHTML = '';
+}
+
 function createProductImageElement(imageSource) {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -42,7 +54,10 @@ function createProductItemElement({ sku, name, image, value }) {
 
 async function addProductsItem() {
   const sectionItems = document.querySelector('.items');
+  insertLoadingPage(sectionItems);
+  
   const products = await filterKeysProducts();
+  removeLoadingPage(sectionItems);
   
   products.forEach((product) => {
     const item = createProductItemElement(product);
