@@ -104,6 +104,15 @@ function setItemsCart() {
   itemsList.addEventListener('click', addItemsInCart);
 }
 
+function clearCart() {
+  const buttonEmptyCart = document.querySelector('.empty-cart');
+  buttonEmptyCart.addEventListener('click', () => {
+    listCart.innerHTML = '';
+    calculateCartPrice();
+    saveCart();
+  });
+}
+
 function loadCartList() {
   const list = getSavedCartItems();
   listCart.innerHTML = list;
@@ -118,4 +127,5 @@ window.onload = () => {
   addProductsItem();
   setItemsCart();
   calculateCartPrice();
+  clearCart();
 };
