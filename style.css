@@ -118,6 +118,11 @@ body {
   width: 100%;
 }
 
+.item .item__price {
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
 .item .item__add {
   background-color: rgb(5, 52, 219);
   border: 0;
@@ -125,6 +130,10 @@ body {
   margin: 0;
   padding: 10px;
   color: white;
+}
+
+.item .item__add:hover {
+  font-weight: 900;
 }
 
 .cart {
@@ -136,8 +145,12 @@ body {
 }
 
 .cart .cart__items {
-  height: 500px;
+  height: 700px;
   overflow-y: scroll;
+}
+
+.cart__items .cart__item {
+  padding: 12px;
 }
 
 .price-display {
@@ -158,4 +171,12 @@ body {
   background-color: rgb(5, 52, 219);
   border-radius: 8px;
   color: white;
+}
+
+.empty-cart:hover {
+  width: 175px;
+  height: 38px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
 }
