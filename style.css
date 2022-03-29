@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgb(245, 245, 245);
+  background-color: whitesmoke;
 }
 
 .header {
@@ -151,6 +151,12 @@ body {
 
 .cart__items .cart__item {
   padding: 12px;
+  cursor: pointer;
+}
+
+.cart__items .cart__item:hover {
+  background-color: rgb(5, 52, 219);
+  color: white;
 }
 
 .price-display {
